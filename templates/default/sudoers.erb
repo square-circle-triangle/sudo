@@ -9,6 +9,12 @@ Defaults      !lecture,tty_tickets,!fqdn
 Defaults      env_keep+=SSH_AUTH_SOCK
 <% end -%>
 
+Defaults        !lecture,tty_tickets,!fqdn
+Defaults        env_keep += "HOME PS1 PATH"
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults        exempt_group=admin
+
+
 # User privilege specification
 root          ALL=(ALL) ALL
 

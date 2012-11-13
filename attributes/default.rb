@@ -22,3 +22,10 @@ default['authorization']['sudo']['users'] = Array.new
 default['authorization']['sudo']['passwordless'] = false
 default['authorization']['sudo']['include_sudoers_d'] = false
 default['authorization']['sudo']['agent_forwarding'] = false
+
+case node.platform
+when "freebsd"
+  override['authorization']['sudo']['sudoers'] = "/usr/local/etc/sudoers"
+else
+  override['authorization']['sudo']['sudoers'] = "/etc/sudoers"
+end

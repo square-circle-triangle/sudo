@@ -18,7 +18,7 @@
 #
 
 package "sudo" do
-  action :install
+  action platform?("freebsd") ? :install : :upgrade
 end
 
 if node['authorization']['sudo']['include_sudoers_d']
@@ -38,7 +38,7 @@ if node['authorization']['sudo']['include_sudoers_d']
   end
 end
 
-template "/etc/sudoers" do
+template node.authorization.sudo.sudoers do
   source "sudoers.erb"
   mode 0440
   owner "root"
